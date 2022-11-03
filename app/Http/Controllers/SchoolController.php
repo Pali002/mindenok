@@ -94,8 +94,12 @@ class SchoolController extends Controller {
             return redirect("/");
         }
 
-        public function deleteStudent() {
-            
+        public function deleteStudent(Request $request) {
+            $student = Student::where("name", $request->name)->first();
+            $id = $student->id;
+
+            $student->delete($id);
+            return redirect("/");
         }
 };  
 
