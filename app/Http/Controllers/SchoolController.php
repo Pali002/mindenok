@@ -77,7 +77,25 @@ class SchoolController extends Controller {
         }
 
         public function updateStudent(Request $request) {
+            $courese = $request->course;
+            $course = Course::where("name", $course)->get();
+            $course_id = 0;
+            foreach($courses as $course)
 
+                $course_id = $course->id;
+
+            $student = Student::where("name", $request->name)->first();
+
+            $student->name = $request->name;
+            $student->email = $request->email;
+            $student->course_id = $course_id;
+            
+            $student->save();
+            return redirect("/");
+        }
+
+        public function deleteStudent() {
+            
         }
 };  
 
